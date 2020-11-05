@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
-  def index  # indexは一覧を表示するアクション
+  def index  
+    @posts = Post.all.order(id: "DESC")
+  end
+
+  def create
+    Post.create(content: params[:content])
+    redirect_to action: :index
   end
 end
